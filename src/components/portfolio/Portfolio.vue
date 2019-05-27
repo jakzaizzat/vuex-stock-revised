@@ -1,9 +1,8 @@
 <template>
   <div class="px-2 py-8">
     <!-- <Stock v-for="stock in stocks" :stock="stock"></Stock> -->
-
     <div class="flex flex-wrap -mx-2">
-      <Card v-for="stock in stocks" :stock="stock" :key="stock.name"></Card>
+      <Card v-for="stock in stocks" :stock="stock" :key="stock.name" types="sell"></Card>
     </div>
   </div>
 </template>

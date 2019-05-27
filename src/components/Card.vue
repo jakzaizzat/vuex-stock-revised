@@ -19,7 +19,7 @@
         <div class="price">{{stock.price | currency}}</div>
         <p>Lorem Ipsum Lorem Ipsum</p>
 
-        <input type="number" class="form-control" placeholder="Quantity" v-model="quantity">
+        <input type="number" placeholder="Quantity" v-model="quantity">
 
         <button class="btn" @click="buyStock" :disabled="insufficientFunds || quantity<=0">Buy</button>
       </div>
@@ -73,12 +73,12 @@ export default {
   @apply font-semibold text-gray-700 py-3 border-b border-gray-400 relative;
 }
 svg {
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   @apply h-4 w-4 fill-current text-gray-800 absolute opacity-75 cursor-pointer;
 }
 .body {
-  @apply py-4;
+  @apply p-4;
 }
 .price {
   @apply text-4xl;
@@ -87,7 +87,7 @@ p {
   @apply text-sm text-gray-600 mb-4;
 }
 
-.btn {
-  @apply bg-gray-800 text-white px-6 py-1 rounded font-semibold;
+input {
+  @apply bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight mb-4;
 }
 </style>

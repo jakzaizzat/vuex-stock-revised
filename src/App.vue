@@ -1,11 +1,9 @@
 <template>
-  <div>
+  <div class="h-full">
     <AppHeader></AppHeader>
-    <div class="container">
-      <transition name="slide" mode="out-in">
-        <router-view></router-view>
-      </transition>
-    </div>
+    <transition name="slide" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -26,9 +24,22 @@ export default {
 @import "./assets/css/tailwind.css";
 body {
   background-color: #f5f7fa;
+  @apply min-h-screen;
 }
 .container {
-  @apply max-w-2xl mx-auto px-2;
+  @apply max-w-4xl mx-auto px-2;
+}
+
+.btn {
+  @apply bg-gray-800 text-white px-6 py-1 rounded font-semibold flex items-center justify-center;
+}
+
+.btn-outline {
+  @apply text-gray-800 border border-gray-800 bg-white;
+}
+
+.btn svg {
+  @apply h-5 w-5 mr-2 fill-current text-gray-500;
 }
 
 .slide-enter-active {
