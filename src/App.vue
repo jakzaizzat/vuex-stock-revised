@@ -12,19 +12,20 @@
 </template>
 
 <script>
-import AppHeader from './components/Header.vue';
+import AppHeader from "./components/Header.vue";
 export default {
   components: {
     AppHeader
-  }, 
-  created(){
+  },
+  created() {
     // Vue instance is created in the lifecycle
-    this.$store.dispatch('initStocks');
+    this.$store.dispatch("initStocks");
   }
-}
+};
 </script>
 
 <style>
+@import "./assets/css/tailwind.css";
 body {
   padding-top: 30px;
 }
@@ -35,12 +36,24 @@ body {
   animation: slide-out 200ms ease-out forwards;
 }
 @keyframes slide-in {
-  from { transform: translateY(-30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slide-out {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-30px); opacity: 0; }
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
 }
 </style>
