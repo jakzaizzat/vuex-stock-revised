@@ -1,67 +1,134 @@
 <template>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <router-link to="/" class="navbar-brand">Stock Trader</router-link>
+  <nav>
+    <div class="container flex items-center justify-between">
+      <div>
+        <router-link to="/" class="logo">Stock Trader</router-link>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" >
-        <ul class="nav navbar-nav">
-          <router-link to="/portfolio" activeClass="active" tag="li"><a>Portfolio</a></router-link>
-          <router-link to="/stocks" activeClass="active" tag="li"><a>Stocks</a></router-link>
+      <ul class="flex items-center">
+        <router-link to="/portfolio" activeClass="active" tag="li">
+          <a>Portfolio</a>
+        </router-link>
+        <router-link to="/stocks" activeClass="active" tag="li">
+          <a>Stocks</a>
+        </router-link>
+        <li>
+          <a href="#" @click="endDay">End Day</a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Save & Load
+            <span class="caret"></span>
+          </a>
+        </li>
+        <li>
+          <strong
+            class="navbar-text navbar-right text-yellow-900 bg-yellow-300 p-2 rounded"
+          >Cash: {{ funds | currency }}</strong>
+        </li>
+      </ul>
+
+      <!-- <div class="collapse navbar-collapse flex items-center justify-center">
+        <ul class>
+          <router-link to="/portfolio" activeClass="active" tag="li">
+            <a>Portfolio</a>
+          </router-link>
+          <router-link to="/stocks" activeClass="active" tag="li">
+            <a>Stocks</a>
+          </router-link>
         </ul>
         <strong class="navbar-text navbar-right">Cash: {{ funds | currency }}</strong>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" @click="endDay">End Day</a></li>
-          <li class="dropdown" :class="{open: isDropdownOpen}" @click="isDropdownOpen = !isDropdownOpen">
-            <a href="#" class="dropdown-toggle" 
-              data-toggle="dropdown" 
-              role="button" 
-              aria-haspopup="true" 
-              aria-expanded="false">Save & Load <span class="caret"></span></a>
+          <li>
+            <a href="#" @click="endDay">End Day</a>
+          </li>
+          <li
+            class="dropdown"
+            :class="{open: isDropdownOpen}"
+            @click="isDropdownOpen = !isDropdownOpen"
+          >
+            <a
+              href="#"
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Save & Load
+              <span class="caret"></span>
+            </a>
             <ul class="dropdown-menu">
-              <li><a href="#" @click="saveData">Save</a></li>
-              <li><a href="#" @click="loadData">Load</a></li>
+              <li>
+                <a href="#" @click="saveData">Save</a>
+              </li>
+              <li>
+                <a href="#" @click="loadData">Load</a>
+              </li>
             </ul>
           </li>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>-->
+    </div>
   </nav>
 </template>
 
 <script>
-  import {mapActions, mapGetters} from 'vuex';
-  export default {
-    data () {
-      return {
-        isDropdownOpen: false
-      }
+import { mapActions, mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      isDropdownOpen: false
+    };
+  },
+  computed: {
+    ...mapGetters(["stocks", "portfolio", "funds"])
+  },
+  methods: {
+    ...mapActions({
+      randomizeStocks: "randomizeStocks",
+      loadDataAction: "loadData"
+    }),
+    endDay() {
+      this.randomizeStocks();
     },
-    computed: {
-      ...mapGetters(['stocks','portfolio','funds'])
+    saveData() {
+      const data = {
+        funds: this.funds,
+        stocks: this.stocks,
+        portfolio: this.portfolio
+      };
+      this.$http.put("data.json", data);
     },
-    methods: {
-      ...mapActions({
-        randomizeStocks: 'randomizeStocks', 
-        loadDataAction: 'loadData'
-      }),
-      endDay() {
-        this.randomizeStocks();
-      },
-      saveData() {
-        const data = {
-          funds: this.funds,
-          stocks: this.stocks,
-          portfolio: this.portfolio
-        }
-        this.$http.put('data.json',data);
-      },
-      loadData() {
-        this.loadDataAction();
-      }
+    loadData() {
+      this.loadDataAction();
     }
   }
+};
 </script>
+
+<style lang="postcss" scoped>
+nav {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
+  @apply border-t-4 border-yellow-700 py-4 bg-white;
+}
+
+.logo {
+  @apply font-bold;
+}
+
+ul {
+  @apply list-none;
+}
+
+li {
+  @apply mx-2 text-gray-800 text-sm;
+}
+</style>

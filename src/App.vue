@@ -1,12 +1,10 @@
 <template>
-  <div class="container">
+  <div>
     <AppHeader></AppHeader>
-    <div class="row">
-      <div class="col-md-12">
-        <transition name="slide" mode="out-in">
-          <router-view></router-view>
-        </transition>
-      </div>
+    <div class="container">
+      <transition name="slide" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 </template>
@@ -24,11 +22,15 @@ export default {
 };
 </script>
 
-<style>
+<style lang="postcss">
 @import "./assets/css/tailwind.css";
 body {
-  padding-top: 30px;
+  background-color: #f5f7fa;
 }
+.container {
+  @apply max-w-2xl mx-auto px-2;
+}
+
 .slide-enter-active {
   animation: slide-in 200ms ease-out forwards;
 }
