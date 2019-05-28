@@ -7,8 +7,13 @@
         <li v-for="stock in stocks" :key="stock.id">{{ stock.name }} @${{stock.price | currency}}</li>
       </ul>
     </div>
-
-    <div class="sidebar__drag"></div>
+    <drop
+      class="sidebar__drag"
+      @drop="handleDrop"
+      :class="{ active }"
+      @dragover="active = true"
+      @dragleave="active = false"
+    ></drop>
   </div>
 </template>
 
@@ -21,8 +26,19 @@ export default {
       type: Boolean
     }
   },
+  data() {
+    return {
+      active: false
+    };
+  },
   computed: {
     ...mapGetters({ stocks: "portfolio" })
+  },
+  methods: {
+    handleDrop(data, event) {
+      this.active = false;
+      alert(`You dropped with data: ${JSON.stringify(data)}`);
+    }
   }
 };
 </script>
@@ -47,5 +63,9 @@ export default {
 
 .sidebar__drag {
   @apply bg-gray-700 h-32 w-auto rounded shadow-inner;
+}
+
+.sidebar__drag.active {
+  @apply bg-black;
 }
 </style>

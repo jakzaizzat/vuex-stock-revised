@@ -35,7 +35,7 @@ body {
 }
 
 .btn-outline {
-  @apply text-gray-800 border border-gray-800 bg-white;
+  @apply text-gray-800 border border-gray-500 bg-white;
 }
 
 .btn svg {

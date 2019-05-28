@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col md:flex-row fullscreen">
     <div class="w-full md:w-3/4 container px-2 py-8">
-      <button class="btn btn-outline ml-auto block mb-2" @click.prevent="toggle">
+      <button class="btn btn-outline text-sm ml-auto block mb-2" @click.prevent="toggle">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path
             class="heroicon-ui"
@@ -12,7 +12,6 @@
         <span v-else>Close</span>
       </button>
       <div class="flex flex-wrap -mx-2">
-        <!-- <Stock v-for="stock in stocks" :stock="stock" :key="stock.name"></Stock> -->
         <Card v-for="stock in stocks" :stock="stock" :key="stock.name" types="buy"/>
       </div>
     </div>
