@@ -3,7 +3,13 @@
     <div class="card">
       <div class="title">
         <drag :transfer-data="{ stock }" drop-effect="move" class="cursor-move">{{ stock.name }}</drag>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <svg
+          @click="openModal = true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+        >
           <path
             class="heroicon-ui"
             d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 9a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0v4a1 1 0 0 1-1 1zm0 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
@@ -17,12 +23,16 @@
         <input type="number" placeholder="Quantity" v-model="quantity">
 
         <button class="btn" @click="buyStock" :disabled="insufficientFunds || quantity<=0">Buy</button>
+
+        <Modal v-model="openModal"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Modal from "../components/Modal.vue";
+
 export default {
   props: {
     stock: {
@@ -33,9 +43,13 @@ export default {
       type: String
     }
   },
+  components: {
+    Modal
+  },
   data() {
     return {
-      quantity: 0
+      quantity: 0,
+      openModal: false
     };
   },
   computed: {
