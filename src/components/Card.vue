@@ -26,7 +26,9 @@
           <span class="capitalize">{{ this.types }}</span>
         </button>
 
-        <Modal v-model="openModal"/>
+        <Modal title="Recent 5 tweets" v-model="openModal">
+          <TwitterFeed/>
+        </Modal>
       </div>
     </div>
   </div>
@@ -35,6 +37,7 @@
 <script>
 import { mapActions } from "vuex";
 import Modal from "../components/Modal.vue";
+import TwitterFeed from "../components/TwitterFeed.vue";
 
 export default {
   props: {
@@ -47,7 +50,8 @@ export default {
     }
   },
   components: {
-    Modal
+    Modal,
+    TwitterFeed
   },
   data() {
     return {

@@ -16,17 +16,10 @@
           <a href="#" @click="endDay">End Day</a>
         </li>
         <li>
-          <a
-            href="#"
-            class="dropdown-toggle"
-            data-toggle="dropdown"
-            role="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Save & Load
-            <span class="caret"></span>
-          </a>
+          <a href="#" @click="saveData">Save</a>
+        </li>
+        <li>
+          <a href="#" @click="loadData">Load</a>
         </li>
         <li>
           <strong
@@ -105,7 +98,7 @@ export default {
         stocks: this.stocks,
         portfolio: this.portfolio
       };
-      this.$http.put("data.json", data);
+      localStorage.setItem("data", JSON.stringify(data));
     },
     loadData() {
       this.loadDataAction();

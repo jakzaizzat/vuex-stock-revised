@@ -16,6 +16,12 @@ export default {
   created() {
     // Vue instance is created in the lifecycle
     this.$store.dispatch("initStocks");
+
+    // Check for an existing data
+    // if (localStorage.getItem("data")) {
+    //   alert("eh. ada data la");
+    // }
+    // this.$store.dispatch("loadData");
   }
 };
 </script>

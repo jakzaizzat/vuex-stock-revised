@@ -14,7 +14,7 @@
         ></path>
       </svg>
       <div class="modal__title">Recent 5 Tweets</div>
-      <TwitterFeed/>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -24,6 +24,10 @@ import TwitterFeed from "../components/TwitterFeed.vue";
 
 export default {
   props: {
+    title: {
+      required: true,
+      type: String
+    },
     value: {
       required: true
     }
@@ -43,11 +47,11 @@ export default {
 <style lang="postcss">
 .modal {
   background-color: rgba(0, 0, 0, 0.7);
-  @apply fixed top-0 left-0 min-h-screen w-full flex items-center justify-center z-20;
+  @apply absolute top-0 left-0 min-h-screen w-full flex items-center justify-center z-20;
 }
 
 .modal .container {
-  @apply bg-white p-4 max-w-sm rounded border border-gray-200 text-left shadow;
+  @apply bg-white p-4 max-w-sm rounded border border-gray-200 text-left shadow my-4;
 }
 
 .modal__title {

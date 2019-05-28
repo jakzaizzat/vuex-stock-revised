@@ -12,6 +12,7 @@
   </div>
 </template>
 
+
 <style lang="postcss" scoped>
 .twitter {
   @apply flex items-center justify-center border-b border-gray-400 py-4;
