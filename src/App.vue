@@ -34,6 +34,10 @@ body {
   @apply bg-gray-800 text-white px-6 py-1 rounded font-semibold flex items-center justify-center;
 }
 
+.btn:disabled {
+  @apply bg-gray-400;
+}
+
 .btn-outline {
   @apply text-gray-800 border border-gray-500 bg-white;
 }

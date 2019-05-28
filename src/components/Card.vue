@@ -22,7 +22,9 @@
 
         <input type="number" placeholder="Quantity" v-model="quantity">
 
-        <button class="btn" @click="buyStock" :disabled="insufficientFunds || quantity<=0">Buy</button>
+        <button class="btn" @click="submit" :disabled="isDisabled">
+          <span class="capitalize">{{ this.types }}</span>
+        </button>
 
         <Modal v-model="openModal"/>
       </div>
@@ -31,6 +33,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import Modal from "../components/Modal.vue";
 
 export default {
@@ -39,7 +42,7 @@ export default {
       type: Object,
       required: true
     },
-    type: {
+    types: {
       type: String
     }
   },
@@ -58,20 +61,49 @@ export default {
     },
     insufficientFunds() {
       return this.quantity * this.stock.price > this.funds;
+    },
+    isDisabled() {
+      var status = false;
+      if (
+        this.types === "buy" &&
+        this.quantity * this.stock.price > this.funds
+      ) {
+        status = true;
+      }
+
+      if (this.quantity <= 0) {
+        status = true;
+      }
+
+      return status;
     }
   },
   methods: {
+    submit() {
+      if (this.types === "buy") {
+        this.buyStock();
+      }
+      if (this.types === "sell") {
+        this.sellStock();
+      }
+      this.quantity = 0;
+    },
     buyStock() {
+      const order = {
+        stockId: this.stock.id,
+        stockPrice: this.stock.price,
+        quantity: parseInt(this.quantity)
+      };
+      this.$store.dispatch("buyStock", order);
+    },
+    ...mapActions({ sellStockAction: "sellStock" }),
+    sellStock() {
       const order = {
         stockId: this.stock.id,
         stockPrice: this.stock.price,
         quantity: this.quantity
       };
-      this.$store.dispatch("buyStock", order);
-      this.quantity = 0;
-    },
-    alert() {
-      alert("test alert");
+      this.sellStockAction(order);
     }
   }
 };
