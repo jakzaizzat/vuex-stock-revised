@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";
 import VueDragDrop from "vue-drag-drop";
+import Notifications from "vue-notification";
 
 import App from "./App.vue";
 import { routes } from "./routes";
@@ -10,12 +11,12 @@ import store from "./store/store";
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueDragDrop);
+Vue.use(Notifications);
 
 Vue.http.options.root = "https://vue-stock-trader-41a5b.firebaseio.com/";
 
 // Have it here because Header and Home components use it
 Vue.filter("currency", value => {
-  console.log(value);
   return "$" + value.toLocaleString();
 });
 

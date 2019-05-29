@@ -1,19 +1,21 @@
 <template>
   <div class="modal" v-show="value">
     <div class="container">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        class="icon-close"
-        @click.prevent="close"
-      >
-        <path
-          class="secondary"
-          fill-rule="evenodd"
-          d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"
-        ></path>
-      </svg>
-      <div class="modal__title">Recent 5 Tweets</div>
+      <div class="flex items-center justify-between py-2">
+        <div class="modal__title">{{ title }}</div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="icon-close"
+          @click.prevent="close"
+        >
+          <path
+            class="secondary"
+            fill-rule="evenodd"
+            d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"
+          ></path>
+        </svg>
+      </div>
       <slot></slot>
     </div>
   </div>
@@ -55,11 +57,11 @@ export default {
 }
 
 .modal__title {
-  @apply font-semibold;
+  @apply font-semibold capitalize;
 }
 
 .modal svg {
-  @apply h-6 w-6 ml-auto cursor-pointer fill-current text-gray-500;
+  @apply h-6 w-6  cursor-pointer fill-current text-gray-500;
 }
 
 .modal svg:hover {

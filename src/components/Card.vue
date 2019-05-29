@@ -18,7 +18,9 @@
       </div>
       <div class="body">
         <div class="price">{{stock.price | currency}}</div>
-        <p>Lorem Ipsum Lorem Ipsum</p>
+        <p
+          v-if="stock.quantity"
+        >{{ stock.quantity }} units - {{ stock.quantity * stock.price | currency }}</p>
 
         <input type="number" placeholder="Quantity" v-model="quantity">
 
@@ -59,29 +61,6 @@ export default {
       openModal: false
     };
   },
-  computed: {
-    funds() {
-      return this.$store.getters.funds;
-    },
-    insufficientFunds() {
-      return this.quantity * this.stock.price > this.funds;
-    },
-    isDisabled() {
-      var status = false;
-      if (
-        this.types === "buy" &&
-        this.quantity * this.stock.price > this.funds
-      ) {
-        status = true;
-      }
-
-      if (this.quantity <= 0) {
-        status = true;
-      }
-
-      return status;
-    }
-  },
   methods: {
     submit() {
       if (this.types === "buy") {
@@ -91,6 +70,12 @@ export default {
         this.sellStock();
       }
       this.quantity = 0;
+      this.$notify({
+        group: "foo",
+        title: "Congratulations 👏🏻",
+        text: "Successful transaction",
+        type: "success"
+      });
     },
     buyStock() {
       const order = {
@@ -108,6 +93,33 @@ export default {
         quantity: this.quantity
       };
       this.sellStockAction(order);
+    }
+  },
+  computed: {
+    funds() {
+      return this.$store.getters.funds;
+    },
+    insufficientFunds() {
+      return this.quantity * this.stock.price > this.funds;
+    },
+    isDisabled() {
+      var status = false;
+      if (
+        this.types === "buy" &&
+        this.quantity * this.stock.price > this.funds
+      ) {
+        status = true;
+      }
+
+      if (this.types === "sell" && this.quantity > this.stock.quantity) {
+        status = true;
+      }
+
+      if (this.quantity <= 0) {
+        status = true;
+      }
+
+      return status;
     }
   }
 };
@@ -129,13 +141,9 @@ svg {
   @apply p-4;
 }
 .price {
-  @apply text-4xl;
+  @apply text-4xl mb-2;
 }
 p {
   @apply text-sm text-gray-600 mb-4;
-}
-
-input {
-  @apply bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight mb-4;
 }
 </style>

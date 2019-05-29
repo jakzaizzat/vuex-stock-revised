@@ -4,6 +4,7 @@
     <transition name="slide" mode="out-in">
       <router-view></router-view>
     </transition>
+    <notifications group="foo"/>
   </div>
 </template>
 
@@ -44,14 +45,21 @@ body {
   @apply bg-gray-400;
 }
 
+.btn:hover {
+  @apply text-gray-800 bg-white;
+}
+
 .btn-outline {
   @apply text-gray-800 border border-gray-500 bg-white;
 }
 
 .btn svg {
-  @apply h-5 w-5 mr-2 fill-current text-gray-500;
+  @apply h-4 w-4 mr-2 fill-current text-gray-500;
 }
 
+input {
+  @apply bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight mb-4;
+}
 .slide-enter-active {
   animation: slide-in 200ms ease-out forwards;
 }
