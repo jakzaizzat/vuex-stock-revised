@@ -10,7 +10,7 @@
       <span>Drag stock over here</span>
     </drop>
 
-    <Modal title="test" v-model="stockModal">
+    <Modal :title="selectedStock.name || '' " v-model="stockModal">
       <p>
         How many unit of
         <span class="font-semibold">{{ selectedStock.name }}</span>

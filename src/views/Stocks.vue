@@ -13,15 +13,13 @@
   </div>
 </template>
 <script>
-import Stock from "./Stock.vue";
-import Card from "../Card.vue";
-import Sidebar from "../Sidebar.vue";
-import SidebarToggle from "../SidebarToggle.vue";
+import Card from "../components/Card.vue";
+import Sidebar from "../components/Sidebar.vue";
+import SidebarToggle from "../components/SidebarToggle.vue";
 
 export default {
   components: {
     Card,
-    Stock,
     Sidebar,
     SidebarToggle
   },

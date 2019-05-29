@@ -13,13 +13,13 @@
           <a>Stocks</a>
         </router-link>
         <li>
-          <a href="#" @click="endDay">End Day</a>
+          <button @click.prevent="endDay">End Day</button>
         </li>
         <li>
-          <a href="#" @click="saveData">Save</a>
+          <button @click.prevent="saveData">Save</button>
         </li>
         <li>
-          <a href="#" @click="loadData">Load</a>
+          <button @click.prevent="loadData">Load</button>
         </li>
         <li>
           <strong
@@ -27,48 +27,6 @@
           >Cash: {{ funds | currency }}</strong>
         </li>
       </ul>
-
-      <!-- <div class="collapse navbar-collapse flex items-center justify-center">
-        <ul class>
-          <router-link to="/portfolio" activeClass="active" tag="li">
-            <a>Portfolio</a>
-          </router-link>
-          <router-link to="/stocks" activeClass="active" tag="li">
-            <a>Stocks</a>
-          </router-link>
-        </ul>
-        <strong class="navbar-text navbar-right">Cash: {{ funds | currency }}</strong>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#" @click="endDay">End Day</a>
-          </li>
-          <li
-            class="dropdown"
-            :class="{open: isDropdownOpen}"
-            @click="isDropdownOpen = !isDropdownOpen"
-          >
-            <a
-              href="#"
-              class="dropdown-toggle"
-              data-toggle="dropdown"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Save & Load
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="#" @click="saveData">Save</a>
-              </li>
-              <li>
-                <a href="#" @click="loadData">Load</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>-->
     </div>
   </nav>
 </template>
@@ -91,6 +49,10 @@ export default {
     }),
     endDay() {
       this.randomizeStocks();
+      this.$notify({
+        group: "foo",
+        title: "End of the day ☀️"
+      });
     },
     saveData() {
       const data = {
@@ -99,9 +61,22 @@ export default {
         portfolio: this.portfolio
       };
       localStorage.setItem("data", JSON.stringify(data));
+
+      this.$notify({
+        group: "foo",
+        title: "Congratulations 👏🏻",
+        text: "Data succesful saved",
+        type: "success"
+      });
     },
     loadData() {
       this.loadDataAction();
+      this.$notify({
+        group: "foo",
+        title: "Congratulations 👏🏻",
+        text: "Data succesful loaded",
+        type: "success"
+      });
     }
   }
 };

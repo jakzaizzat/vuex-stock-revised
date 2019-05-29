@@ -16,25 +16,13 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Stock from "./Stock.vue";
-import Card from "../Card.vue";
-import Sidebar from "../Sidebar.vue";
-import SidebarToggle from "../SidebarToggle.vue";
-import Empty from "../Empty.vue";
+import Card from "../components/Card.vue";
+import Sidebar from "../components/Sidebar.vue";
+import SidebarToggle from "../components/SidebarToggle.vue";
+import Empty from "../components/Empty.vue";
 
 export default {
-  computed: {
-    ...mapGetters({ stocks: "portfolio" }),
-    total() {
-      var total = 0;
-      this.stocks.forEach(stock => {
-        total += stock.price * stock.quantity;
-      });
-      return total;
-    }
-  },
   components: {
-    Stock,
     Card,
     Sidebar,
     SidebarToggle,
@@ -48,6 +36,16 @@ export default {
   methods: {
     toggle() {
       this.openToggle = !this.openToggle;
+    }
+  },
+  computed: {
+    ...mapGetters({ stocks: "portfolio" }),
+    total() {
+      var total = 0;
+      this.stocks.forEach(stock => {
+        total += stock.price * stock.quantity;
+      });
+      return total;
     }
   }
 };
