@@ -1,6 +1,6 @@
 <template>
   <div class="h-full">
-    <AppHeader></AppHeader>
+    <Header></Header>
     <transition name="slide" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import AppHeader from "./components/Header.vue";
+import Header from "./components/Header.vue";
 export default {
   components: {
-    AppHeader
+    Header
   },
   created() {
     // Vue instance is created in the lifecycle
