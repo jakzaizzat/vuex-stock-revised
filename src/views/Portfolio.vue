@@ -6,7 +6,7 @@
         <SidebarToggle v-model="openToggle"/>
       </div>
       <div class="flex flex-wrap -mx-2" v-if="stocks.length">
-        <Stock v-for="stock in stocks" :stock="stock" :key="stock.name" types="sell"/>
+        <Card v-for="stock in stocks" :stock="stock" :key="stock.name" types="sell"></Card>
       </div>
       <Empty v-else/>
     </div>
@@ -16,14 +16,14 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Stock from "../components/Stock.vue";
+import Card from "../components/Card.vue";
 import Sidebar from "../components/Sidebar.vue";
 import SidebarToggle from "../components/SidebarToggle.vue";
 import Empty from "../components/Empty.vue";
 
 export default {
   components: {
-    Stock,
+    Card,
     Sidebar,
     SidebarToggle,
     Empty

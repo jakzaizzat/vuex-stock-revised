@@ -6,20 +6,20 @@
         <SidebarToggle v-model="openToggle"/>
       </div>
       <div class="flex flex-wrap -mx-2">
-        <Stock v-for="stock in stocks" :stock="stock" :key="stock.name" types="buy"/>
+        <Card v-for="stock in stocks" :stock="stock" :key="stock.name" types="buy"/>
       </div>
     </div>
     <Sidebar :show="openToggle" type="portfolio"/>
   </div>
 </template>
 <script>
-import Stock from "../components/Stock.vue";
+import Card from "../components/Card.vue";
 import Sidebar from "../components/Sidebar.vue";
 import SidebarToggle from "../components/SidebarToggle.vue";
 
 export default {
   components: {
-    Stock,
+    Card,
     Sidebar,
     SidebarToggle
   },
