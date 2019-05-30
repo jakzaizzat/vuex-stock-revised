@@ -9,11 +9,41 @@
         Your cash:
         <span class="cash">{{ funds | currency }}</span>
       </p>
+
+      <button class="btn" @click.prevent="fetch">Fetch Twitter</button>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
+
+const config = {
+  headers: {
+    Authorization:
+      'OAuth oauth_consumer_key="7AxS1yrDUk1fuGMiCPdL3kR3y", oauth_nonce="1a9dqt80RBxOpxaXooHGYw2NLO0qHhDU", oauth_signature="Sk658Qit6ZzusABwWf7iMobiMcs%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1559187938", oauth_token="2919810050-uY72CPRxzY0ADil6SDUSNwsbAg9Fje4xj7nvkbr", oauth_version="1.0"'
+  },
+  params: {
+    q: "$app"
+  }
+};
+
 export default {
+  methods: {
+    fetch() {
+      console.log("dah tekan");
+      // axios
+      //   .get(
+      //     "https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json",
+      //     config
+      //   )
+      //   .then(res => {
+      //     console.log(res);
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //   });
+    }
+  },
   computed: {
     funds() {
       return this.$store.getters.funds;
