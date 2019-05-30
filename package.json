@@ -5,10 +5,8 @@
   "description": "A Vue.js project",
   "author": "Kuriakin Zeng <kuriakin@college.harvard.edu>",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "build:lambda": "netlify-lambda build src/lambda",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "start:lambda": "netlify-lambda serve src/lambda"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "autoprefixer": "^9.5.1",
