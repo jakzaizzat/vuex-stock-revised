@@ -1,6 +1,6 @@
 <template>
-  <div class="twitters">
-    <div class="twitter" v-for="i in 5">
+  <div v-if="tweets.length > 0" class="twitters">
+    <div class="twitter" v-for="tweet in tweets" :key="tweet.username">
       <div class="twitter__photo"></div>
       <div class="twitter__content">
         <p class="twitter__username">@jakzaizzat</p>
@@ -11,6 +11,41 @@
     </div>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+  props: {
+    stock: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      tweets: []
+    };
+  },
+  methods: {
+    fetchTweets() {
+      axios
+        .get("https://gentle-earth-27684.herokuapp.com", {
+          params: {
+            name: "$" + this.stock
+          }
+        })
+        .then(res => {
+          this.tweets = res;
+          console.log(thos.tweets);
+        });
+    }
+  },
+  created() {
+    this.fetchTweets();
+  }
+};
+</script>
+
 
 
 <style lang="postcss" scoped>

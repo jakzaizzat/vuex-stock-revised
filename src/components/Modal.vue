@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" v-show="value">
+  <div class="modal" v-if="value">
     <div class="container">
       <div class="flex items-center justify-between py-2">
         <div class="modal__title">{{ title }}</div>

@@ -29,7 +29,7 @@
         </button>
 
         <Modal title="Recent 5 tweets" v-model="openModal">
-          <TwitterFeed/>
+          <TwitterFeed :stock="stock.name" :fetch="openModal"/>
         </Modal>
       </div>
     </div>
