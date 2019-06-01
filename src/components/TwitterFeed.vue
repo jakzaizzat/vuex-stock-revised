@@ -1,13 +1,19 @@
 <template>
-  <div v-if="tweets.length > 0" class="twitters">
-    <div class="twitter" v-for="tweet in tweets" :key="tweet.username">
-      <div class="twitter__photo"></div>
-      <div class="twitter__content">
-        <p class="twitter__username">@jakzaizzat</p>
-        <p
-          class="twitter__tweet"
-        >RT @PostGradProblem: In preparation for the NFL lockout, I will be spending twice as much time analyzing my fantasy baseball team during ...</p>
+  <div>
+    <div v-if="tweets.length > 0" class="twitters">
+      <div class="twitter" v-for="tweet in tweets" :key="tweet.username">
+        <img :src="tweet.profile" class="twitter__photo">
+        <div class="twitter__content">
+          <a
+            :href=" 'https://twitter.com/' + tweet.username "
+            class="twitter__username"
+          >@{{ tweet.username }}</a>
+          <p class="twitter__tweet">{{ tweet.message }}</p>
+        </div>
       </div>
+    </div>
+    <div v-else>
+      <p class="loading">Loading...</p>
     </div>
   </div>
 </template>
@@ -35,8 +41,8 @@ export default {
           }
         })
         .then(res => {
-          this.tweets = res;
-          console.log(thos.tweets);
+          this.tweets = res.data;
+          console.log(this.tweets);
         });
     }
   },
@@ -71,5 +77,13 @@ p {
 
 .twitter__username {
   @apply text-gray-600 text-xs;
+}
+
+.twitter__username:hover {
+  @apply text-blue-500;
+}
+
+.loading {
+  @apply text-center font-semibold;
 }
 </style>

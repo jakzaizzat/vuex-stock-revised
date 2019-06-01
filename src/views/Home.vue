@@ -1,49 +1,20 @@
 <template>
-  <div class="bg-orange-800">
-    <div class="home container">
-      <h1>Stock Trading Demo Vuex App</h1>
-      <h5>You may Save & Load your data</h5>
-      <h5>Click 'End Day' to simulate the closing price</h5>
-      <hr>
-      <p>
-        Your cash:
-        <span class="cash">{{ funds | currency }}</span>
-      </p>
-
-      <button class="btn" @click.prevent="fetch">Fetch Twitter</button>
+  <div class="home">
+    <div class="container">
+      <div>
+        <h1>Stock Trading Demo Vuex App</h1>
+        <h5>You may Save & Load your data</h5>
+        <h5>Click 'End Day' to simulate the closing price</h5>
+        <p>
+          Your cash:
+          <span class="cash">{{ funds | currency }}</span>
+        </p>
+      </div>
     </div>
   </div>
 </template>
 <script>
-import axios from "axios";
-
-const config = {
-  headers: {
-    Authorization:
-      'OAuth oauth_consumer_key="7AxS1yrDUk1fuGMiCPdL3kR3y", oauth_nonce="1a9dqt80RBxOpxaXooHGYw2NLO0qHhDU", oauth_signature="Sk658Qit6ZzusABwWf7iMobiMcs%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1559187938", oauth_token="2919810050-uY72CPRxzY0ADil6SDUSNwsbAg9Fje4xj7nvkbr", oauth_version="1.0"'
-  },
-  params: {
-    q: "$app"
-  }
-};
-
 export default {
-  methods: {
-    fetch() {
-      console.log("dah tekan");
-      // axios
-      //   .get(
-      //     "https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json",
-      //     config
-      //   )
-      //   .then(res => {
-      //     console.log(res);
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
-    }
-  },
   computed: {
     funds() {
       return this.$store.getters.funds;
@@ -54,14 +25,18 @@ export default {
 
 <style lang="postcss" scoped>
 .home {
-  @apply py-16;
+  min-height: 80vh;
+  background-color: #0b3678;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%234c51bf' fill-opacity='0.36' fill-rule='nonzero'%3E%3Cpath d='M29 58.58l7.38-7.39A30.95 30.95 0 0 1 29 37.84a30.95 30.95 0 0 1-7.38 13.36l7.37 7.38zm1.4 1.41l.01.01h-2.84l-7.37-7.38A30.95 30.95 0 0 1 6.84 60H0v-1.02a28.9 28.9 0 0 0 18.79-7.78L0 32.41v-4.84L18.78 8.79A28.9 28.9 0 0 0 0 1.02V0h6.84a30.95 30.95 0 0 1 13.35 7.38L27.57 0h2.84l7.39 7.38A30.95 30.95 0 0 1 51.16 0H60v27.58-.01V60h-8.84a30.95 30.95 0 0 1-13.37-7.4L30.4 60zM29 1.41l-7.4 7.38A30.95 30.95 0 0 1 29 22.16 30.95 30.95 0 0 1 36.38 8.8L29 1.4zM58 1A28.9 28.9 0 0 0 39.2 8.8L58 27.58V1.02zm-20.2 9.2A28.9 28.9 0 0 0 30.02 29h26.56L37.8 10.21zM30.02 31a28.9 28.9 0 0 0 7.77 18.79l18.79-18.79H30.02zm9.18 20.2A28.9 28.9 0 0 0 58 59V32.4L39.2 51.19zm-19-1.4a28.9 28.9 0 0 0 7.78-18.8H1.41l18.8 18.8zm7.78-20.8A28.9 28.9 0 0 0 20.2 10.2L1.41 29h26.57z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+  @apply py-16 flex items-center;
 }
 
 h1 {
-  @apply text-3xl font-bold text-white;
+  @apply text-4xl font-bold text-white;
 }
 h5 {
-  @apply text-gray-100 text-lg leading-normal;
+  @apply text-gray-100 text-2xl leading-normal;
 }
 p {
   @apply text-white mt-4;

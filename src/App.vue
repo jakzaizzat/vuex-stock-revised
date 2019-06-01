@@ -32,23 +32,23 @@ body {
 }
 
 .btn {
-  @apply bg-gray-800 text-white px-6 py-1 rounded font-semibold flex items-center justify-center;
+  @apply bg-indigo-800 text-white px-6 py-1 rounded font-semibold flex items-center justify-center;
 }
 
 .btn:disabled {
-  @apply bg-gray-400;
+  @apply bg-indigo-400;
 }
 
 .btn:hover {
-  @apply text-gray-800 bg-white;
+  @apply text-indigo-800 bg-white;
 }
 
 .btn-outline {
-  @apply text-gray-800 border border-gray-500 bg-white;
+  @apply text-indigo-800 border border-indigo-500 bg-white;
 }
 
 .btn svg {
-  @apply h-4 w-4 mr-2 fill-current text-gray-500;
+  @apply h-4 w-4 mr-2 fill-current text-indigo-500;
 }
 
 input {
