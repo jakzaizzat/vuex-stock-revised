@@ -49,41 +49,84 @@ export default {
 <style lang="postcss">
 .modal {
   background-color: rgba(0, 0, 0, 0.7);
-  @apply absolute top-0 left-0 min-h-screen w-full flex items-center justify-center z-20;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
 }
 
 .modal .container {
-  @apply bg-white p-4 max-w-sm rounded border border-gray-200 text-left shadow my-4;
+  background-color: #fff;
+  padding: 1rem;
+  max-width: 24rem;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-color: #edf2f7;
+  text-align: left;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .modal__title {
-  @apply font-semibold capitalize;
+  font-weight: 600;
+  text-transform: capitalize;
 }
 
 .modal svg {
-  @apply h-6 w-6  cursor-pointer fill-current text-gray-500;
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+  fill: currentColor;
+  color: #a0aec0;
 }
 
 .modal svg:hover {
-  @apply text-black;
+  color: #000;
 }
 
 .modal p {
-  @apply mb-3 text-sm text-gray-800;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: #2d3748;
 }
 
 .modal input {
-  @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  background-color: #edf2f7;
+  color: #4a5568;
+  border-width: 1px;
+  border-color: #edf2f7;
+  border-radius: 0.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.25;
 }
 .modal input:focus {
-  @apply outline-none bg-white border-gray-500;
+  outline: 0;
+  background-color: #fff;
+  border-color: #a0aec0;
 }
 
 .modal .btn {
-  @apply border-none flex items-center justify-center;
+  border-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.modal .btn img {
+/* .modal .btn img {
   @apply h-6 w-auto mr-2;
-}
+} */
 </style>

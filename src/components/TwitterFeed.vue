@@ -7,6 +7,7 @@
           <a
             :href=" 'https://twitter.com/' + tweet.username "
             class="twitter__username"
+            target="_blank"
           >@{{ tweet.username }}</a>
           <p class="twitter__tweet">{{ tweet.message }}</p>
         </div>
@@ -54,37 +55,44 @@ export default {
 
 
 
-<style lang="postcss" scoped>
+<style  scoped>
 .twitter {
-  @apply flex items-center justify-center border-b border-gray-400 py-4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-width: 1px;
+  border-color: #cbd5e0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .twitter:last-child {
-  @apply border-none;
+  border-style: none;
 }
 
 .twitter__photo {
-  @apply h-10 w-10 bg-gray-500 rounded-full;
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: #a0aec0;
+  border-radius: 9999px;
 }
 
 .twitter__content {
-  @apply flex-1 pl-3;
+  flex: 1 1 0%;
+  padding-left: 0.75rem;
 }
 
 p {
-  @apply mb-0;
+  margin-bottom: 0;
 }
 
 .twitter__username {
-  @apply text-gray-600 text-xs;
+  color: #718096;
+  font-size: 0.75rem;
 }
 
 .twitter__username:hover {
-  @apply text-blue-500;
-}
-
-.loading {
-  @apply text-center font-semibold;
+  color: #4299e1;
 }
 
 .lds-dual-ring {

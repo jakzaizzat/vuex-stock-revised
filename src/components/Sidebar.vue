@@ -67,20 +67,28 @@ export default {
 </script>
 
 
-<style lang="postcss" scoped>
+<style scoped>
 .sidebar {
-  @apply bg-gray-800 p-4 flex flex-col justify-between;
+  background-color: #2d3748;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .sidebar h2 {
-  @apply text-white font-semibold mb-4 text-xl;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
 }
 
 .sidebar ul {
-  @apply list-inside;
+  list-style-position: inside;
 }
 
 .sidebar ul li {
-  @apply text-gray-200 mb-4;
+  color: #edf2f7;
+  margin-bottom: 1rem;
 }
 </style>

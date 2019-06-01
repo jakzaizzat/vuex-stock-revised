@@ -1,6 +1,6 @@
 <template>
   <div class="w-full md:w-1/2 px-2 mb-4">
-    <div class="card">
+    <div class="stock">
       <div class="title">
         <drag :transfer-data="{ stock }" drop-effect="move" class="cursor-move">{{ stock.name }}</drag>
         <svg
@@ -125,25 +125,44 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-.card {
-  @apply border-2 border-gray-400 rounded bg-white text-center;
+<style  scoped>
+.stock {
+  border-width: 2px;
+  border-color: #cbd5e0;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  text-align: center;
 }
 .title {
-  @apply font-semibold text-gray-700 py-3 border-b border-gray-400 relative;
+  font-weight: 600;
+  color: #4a5568;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom-width: 1px;
+  border-color: #cbd5e0;
+  position: relative;
 }
 svg {
   top: 10px;
   right: 10px;
-  @apply h-4 w-4 fill-current text-gray-800 absolute opacity-75 cursor-pointer;
+  height: 1rem;
+  width: 1rem;
+  fill: currentColor;
+  color: #2d3748;
+  position: absolute;
+  opacity: 0.75;
+  cursor: pointer;
 }
 .body {
-  @apply p-4;
+  padding: 1rem;
 }
 .price {
-  @apply text-4xl mb-2;
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
 }
 p {
-  @apply text-sm text-gray-600 mb-4;
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 1rem;
 }
 </style>

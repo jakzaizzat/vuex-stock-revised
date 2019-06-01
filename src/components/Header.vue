@@ -98,27 +98,35 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 nav {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
-  @apply border-t-4 border-indigo-700 py-4 bg-white;
+  border-top-width: 4px;
+  border-color: #4c51bf;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #fff;
 }
 
 .logo {
-  @apply font-bold;
+  font-weight: 700;
 }
 
 ul {
-  @apply list-none;
+  list-style-type: none;
 }
 
 li,
 li button {
-  @apply mx-2 text-gray-600 text-sm font-medium;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: #718096;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 li.active {
-  @apply text-indigo-800;
+  color: #434190;
 }
 @keyframes fadeIn {
   0% {
@@ -132,11 +140,21 @@ li.active {
 @media (max-width: 640px) {
   ul {
     top: 3.725rem;
+    -webkit-animation: fadeIn 0.3s ease-out both;
     animation: fadeIn 0.3s ease-out both;
-    @apply absolute left-0 flex-col bg-indigo-100 w-full z-10 py-3 shadow;
+    position: absolute;
+    left: 0;
+    flex-direction: column;
+    background-color: #ebf4ff;
+    width: 100%;
+    z-index: 10;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
   li {
-    @apply my-3;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
   }
 }
 </style>

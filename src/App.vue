@@ -21,38 +21,74 @@ export default {
 };
 </script>
 
-<style lang="postcss">
+<style lang="css">
 @import "./assets/css/tailwind.css";
 body {
   background-color: #f5f7fa;
-  @apply min-h-screen;
+  min-height: 100vh;
 }
 .container {
-  @apply max-w-4xl mx-auto px-2;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .btn {
-  @apply bg-indigo-800 text-white px-6 py-1 rounded font-semibold flex items-center justify-center;
+  background-color: #434190;
+  color: #fff;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn:disabled {
-  @apply bg-indigo-400;
+  background-color: #7f9cf5;
 }
 
 .btn:hover {
-  @apply text-indigo-800 bg-white;
+  color: #434190;
+  background-color: #fff;
 }
 
 .btn-outline {
-  @apply text-indigo-800 border border-indigo-500 bg-white;
+  color: #434190;
+  border-width: 1px;
+  border-color: #667eea;
+  background-color: #fff;
 }
 
 .btn svg {
-  @apply h-4 w-4 mr-2 fill-current text-indigo-500;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+  fill: currentColor;
+  color: #667eea;
 }
 
 input {
-  @apply bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight mb-4;
+  background-color: #edf2f7;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-width: 2px;
+  border-color: #edf2f7;
+  border-radius: 0.25rem;
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: #4a5568;
+  line-height: 1.25;
+  margin-bottom: 1rem;
 }
 .slide-enter-active {
   animation: slide-in 200ms ease-out forwards;

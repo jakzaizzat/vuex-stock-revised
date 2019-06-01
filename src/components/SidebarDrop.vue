@@ -124,16 +124,23 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .drag {
-  @apply bg-gray-700 h-32 w-auto rounded shadow-inner flex items-center justify-center;
+  background-color: #4a5568;
+  height: 8rem;
+  width: auto;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .drag.active {
-  @apply bg-black;
+  background-color: #000;
 }
 
 .drag span {
-  @apply text-gray-400;
+  color: #cbd5e0;
 }
 </style>

@@ -41,8 +41,8 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 span {
-  @apply text-gray-600;
+  color: #5a67d8;
 }
 </style>
